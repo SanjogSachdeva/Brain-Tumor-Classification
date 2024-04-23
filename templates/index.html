@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Tumor Classification</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <script>
+        if ('{{ section_to_scroll }}') {
+            window.location.href += '#{{ section_to_scroll }}';
+        }
+    </script>
+</head>
+<body>
+<div class="intro">
+    <img src="{{url_for('static', filename='images/backgroundimage.jpg')}}" alt="BackgroundImage">
+    <h1>BRAIN TUMOR CLASSIFICATION</h1>
+    <hr>
+    <h3>Classifying Brain Tumor</h3>
+    <button onClick="document.getElementById('scrollToSection').scrollIntoView();">BRAIN TUMOR CLASSIFICATION</button>
+</div>
+<div class="abstract">
+    <h2>ABSTRACT</h2>
+    <hr>
+    <div>
+        A Brain tumor is considered as one of the aggressive diseases, among children and adults. Brain tumors account for 85 to 90 percent of all primary Central Nervous System(CNS) tumors. Every year, around 11,700 people are diagnosed with a brain tumor. The 5-year survival rate for people with a cancerous brain or CNS tumor is approximately 34 percent for men and36 percent for women. Brain Tumors are classified as: Benign Tumor, Malignant Tumor, Pituitary Tumor, etc. Proper treatment, planning, and accurate diagnostics should be implemented to improve the life expectancy of the patients. The best technique to detect brain tumors is Magnetic Resonance Imaging (MRI). A huge amount of image data is generated through the scans.
+        <br>
+        <br>
+        These images are examined by the radiologist. A manual examination can be error-prone due to the level of complexities involved in brain tumors and their properties.
+Application of automated classification techniques using Machine Learning(ML) and Artificial Intelligence(AI)has consistently shown higher accuracy than manual classification. Hence, proposing a system performing detection and classification by using Deep Learning Algorithms using ConvolutionNeural Network (CNN), Artificial Neural Network (ANN), Support Vector Machine (SVM), Decision Tree and Random Forest would be helpful to doctors all around the world.
+    </div>
+</div>
+<div class="categories">
+    <h2>CATEGORIES</h2>
+    <hr>
+    <p>Here we put information of IV classes.</p>
+    <div class="container">
+        <div class="box">
+            <img src="{{url_for('static', filename='images/no_tumor.jpg')}}" alt="No Tumor">
+            <h3>NO TUMOR</h3>
+            <p>The Brain scan is normal. No Tumor is detected.</p>
+        </div>
+        <div class="box">
+            <img src="{{url_for('static', filename='images/glioma_tumor.jpg')}}" alt="Glioma Tumor">
+            <h3>GLIOMA TUMOR</h3>
+            <p>A glioma is a type of tumor that starts in the glial cells of the brain or the spine. Gliomas comprise about 30 percent of all brain tumors and central nervous system tumours, and 80 percent of all malignant brain tumours.</p>
+            <a href="https://en.wikipedia.org/wiki/Glioma" target="_blank">Read More »</a>
+        </div>
+        <div class="box">
+            <img src="{{url_for('static', filename='images/meningioma_tumor.jpg')}}" alt="Meningioma Tumor">
+            <h3>MENINGIOMA TUMOR</h3>
+            <p>A malignant tumor contrasts with a non-cancerous benign tumor in that a malignancy is not self-limited in its growth, is capable of invading into adjacent tissues, and may be capable of spreading to distant tissues.</p>
+            <a href="https://en.m.wikipedia.org/wiki/Malignancy" target="_blank">Read More »</a>
+        </div>
+        <div class="box">
+            <img src="{{url_for('static', filename='images/pituitary_tumor.jpg')}}" alt="Pituitary Tumor">
+            <h3>PITUITARY TUMOR</h3>
+            <p>Pituitary adenomas are tumors that occur in the pituitary gland. Pituitary adenomas are generally divided into three categories dependent upon their biological functioning: benign adenoma, invasive adenoma, and carcinomas.</p>
+            <a href="https://en.m.wikipedia.org/wiki/Pituitary_adenoma" target="_blank">Read More »</a>
+        </div>
+    </div>
+</div>
+<div id="scrollToSection" class="classification">
+    <h2>BRAIN TUMOR CLASSIFIER</h2>
+    <hr>
+<form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+    <div class="tumor_input">
+        <label for="tumorimg">Image:&nbsp;</label>
+        <input id="tumorimg" type="file" name="image" accept="image/*" required>
+    </div>
+    <input class="btn" type="submit" value="Upload">
+</form>
+
+{% if file_path %}
+<img class="tumor_img" src="{{file_path}}">
+<p class="prediction">Prediction: {{ prediction }}</p>
+{% endif %}
+</div>
+<div class="details">
+    <div class="row">
+        <div class="col-one">
+            <p>Ashutosh Wahi (01414812720)</p>
+            <p>Sanjog Sachdeva (04114812720)</p>
+            <p>Shivam Dohare (04314812720)</p>
+        </div>
+        <div class="col-two">
+            <p>Project Guide :</p>
+            <p>Dr.Himanshu Khanna</p>
+            <p>Associate Professor, CSE</p>
+        </div>
+    </div>
+    <div class="footer">
+        Maharaja Agrasen Institute of
+Technology
+        <br>
+        PSP area, Sector – 22, Rohini, New Delhi – 110085
+    </div>
+</div>
+<script>
+    var hash = window.location.hash;
+    if (hash === '#scrollToSection') {
+        var sectionToScroll = document.getElementById('scrollToSection');
+        sectionToScroll.scrollIntoView({ behavior: 'smooth' });
+    }
+ </script>
+</body>
+</html>
